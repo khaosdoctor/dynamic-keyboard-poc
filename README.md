@@ -53,4 +53,6 @@ npm install
 npm run start:dev
 ```
 
-The application will run on port 3000. I'm also sending the `.env` file for reference, you can set the `PORT` variable there and other variables that are needed for other cases.
+The application will run on port 3000, just go to `http://localhost:3000` and see the frontend working.
+
+I'm also sending the `.env` file for reference when required, you can set the `PORT` variable there and other variables that are needed for other cases.
