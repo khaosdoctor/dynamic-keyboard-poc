@@ -1,6 +1,6 @@
 # Dynamic keyboard proof of concept
 
-> How the hell does this work?
+> Case 1: Frontend with static keyboard and plaintext pins
 
 ## What is this?
 
