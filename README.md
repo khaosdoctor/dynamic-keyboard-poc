@@ -2,6 +2,8 @@
 
 > How the hell does this work?
 
+*There's no code in here, jump to one of the branches to see how it works*
+
 ## What is this?
 
 Usually, especially in banks, you have to type a pin in a type of keyboard that looks like this:
@@ -14,7 +16,7 @@ I got curious after seeing [this tweet](https://twitter.com/niagalves/status/171
 
 ## Cases
 
-There are two main cases here:
+This is the main branch so there's no actual code in here, you can check the other branches to see how it works. But there are two main cases:
 
 1. The pins are stored in plaintext in the database
 2. The pins are stored hashed in the database
@@ -31,16 +33,6 @@ And for each case we have some other subcases:
 The idea is to explore these points and see what are the pros and cons of each approach.
 
 Each case has its own branch, so you can check them out and see how they work.
-
-# How this case works
-
-In this case, we are running the simplest possible configuration, which is:
-
-1. The pins are stored in plaintext in the database
-2. The whole cartesian permutation of the keyboard is done in the frontend
-  2.1 The keyboard is always static, having the same mapping for each user
-
-The idea is to have a static keyboard, which means that the mapping of the keyboard is always the same for each user, and the whole cartesian permutation of the keyboard is done in the frontend, which means that the backend only receives the collection of possible pins in plaintext so it can compare with the pins it has stored locally in memory (we have some test users with some pins in the [server file](./src/server.ts)).
 
 # How to run
 
