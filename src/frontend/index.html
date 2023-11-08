@@ -41,7 +41,7 @@
     <section>
       <div class="has-text-centered mt-4">
         <h3 class="title is-3 column is-12">Possibilities: {{possibilities.length}} (pin length: {{inputPin.length}})</h3>
-        <span>Time to compute: {{timeElapsed}} ms</span>
+        <span>Time to compute: {{elapsedTime}} ms</span>
       </div>
       <div class="columns mt-2">
         <pre class="column is-offset-3 is-6 has-text-centered">{{possibilities.length <= 2**13 ? possibilities : 'Too many possibilities to display'}}</pre>
@@ -65,7 +65,7 @@
       return {
         possibilities: [],
         inputPin: '',
-        timeElapsed: 0
+        elapsedTime: 0
       }
     },
     methods: {
@@ -103,11 +103,12 @@
         }
         this.possibilities = newPossibilities
         const endTime = performance.now()
-        this.timeElapsed = endTime - startTime
+        this.elapsedTime = (endTime - startTime)
       },
       resetPin() {
         this.inputPin = ''
         this.possibilities = []
+        this.elapsedTime = 0
       }
     }
   }).mount('#app')
