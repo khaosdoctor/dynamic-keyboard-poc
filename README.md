@@ -45,7 +45,7 @@ The project is done as a single front-end and backend application using Vue and 
 
 ```bash
 npm install
-npm run start:dev
+npm run start
 ```
 
 The application will run on port 3000, just go to `http://localhost:3000` and see the frontend working.
