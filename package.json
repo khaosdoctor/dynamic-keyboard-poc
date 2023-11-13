@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_OPTIONS='--import=tsx' node --env-file=.env src/server.ts",
+    "start": "tsx watch src/server.ts",
     "start:dev": "tsx watch src/server.ts"
   },
   "keywords": [],

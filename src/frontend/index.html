@@ -12,7 +12,12 @@
       <div class="columns">
         <div class="column">
           <h1 class="title has-text-centered">Dynamic Keyboard</h1>
-          <h5 class="title has-text-centered is-size-5">Front-end version with plaintext pins</h5>
+          <h5 class="title has-text-centered is-size-5">Front-end version with plaintext pins and dynamic keyboard</h5>
+          <h5 class="title has-text-centered is-size-6">
+            <strong>Your session expires at: </strong>
+            <span v-if="sessionExpiration">{{Date(sessionExpiration)}}</span>
+            <a class="ml-3" @click="getKeyboardMap()">Refresh</a>
+          </h5>
         </div>
       </div>
     </section>
@@ -27,14 +32,14 @@
         </div>
       </div>
     </section>
-    <section id="keyboard" class="container is-flex is-align-content-center is-align-items-center is-justify-content-center">
+    <section v-if="keyboardMap" id="keyboard" class="container is-flex is-align-content-center is-align-items-center is-justify-content-center">
       <div class="columns">
         <div class="column mt-4">
-          <button type="button" class="button is-link mr-3 is-rounded" @click="makePermutation(0)">0 ou 1</button>
-          <button type="button" class="button is-link mr-3 is-rounded" @click="makePermutation(1)">2 ou 3</button>
-          <button type="button" class="button is-link mr-3 is-rounded" @click="makePermutation(2)">4 ou 5</button>
-          <button type="button" class="button is-link mr-3 is-rounded" @click="makePermutation(3)">6 ou 7</button>
-          <button type="button" class="button is-link mr-3 is-rounded" @click="makePermutation(4)">8 ou 9</button>
+          <button type="button" class="button is-link mr-3 is-rounded" @click="makePermutation(keyboardMap[0])">{{ keyboardMap[0].join(' ou ') }}</button>
+          <button type="button" class="button is-link mr-3 is-rounded" @click="makePermutation(keyboardMap[1])">{{ keyboardMap[1].join(' ou ') }}</button>
+          <button type="button" class="button is-link mr-3 is-rounded" @click="makePermutation(keyboardMap[2])">{{ keyboardMap[2].join(' ou ') }}</button>
+          <button type="button" class="button is-link mr-3 is-rounded" @click="makePermutation(keyboardMap[3])">{{ keyboardMap[3].join(' ou ') }}</button>
+          <button type="button" class="button is-link mr-3 is-rounded" @click="makePermutation(keyboardMap[4])">{{ keyboardMap[4].join(' ou ') }}</button>
         </div>
       </div>
     </section>
@@ -65,10 +70,23 @@
       return {
         possibilities: [],
         inputPin: '',
-        elapsedTime: 0
+        elapsedTime: 0,
+        sessionExpiration: null,
+        keyboardMap: null
       }
     },
+    async created() {
+      this.getKeyboardMap()
+    },
     methods: {
+      async getKeyboardMap() {
+        const config = await fetch('/config')
+        if (config.ok) {
+          const {map, expirationDate} = await config.json()
+          this.keyboardMap = map
+          this.sessionExpiration = expirationDate
+        }
+      },
       async sendPin() {
         const result = await fetch('/api/check', {
           method: 'POST',
@@ -83,12 +101,11 @@
           if(user) return alert(`Pin found! Welcome ${user}`)
           alert('Pin not found')
         } else {
-          alert('Error: ' + result.status)
+          alert(`Error: ${result.status} -> ${(await result.json()).error}`)
         }
       },
-      makePermutation(index) {
+      makePermutation(currentPossibilities) {
         const startTime = performance.now()
-        const currentPossibilities = [index*2, index*2+1]
         this.inputPin += '*'
         if (this.possibilities.length === 0) {
           this.possibilities = currentPossibilities
