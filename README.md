@@ -34,6 +34,19 @@ The idea is to explore these points and see what are the pros and cons of each a
 
 Each case has its own branch, so you can check them out and see how they work.
 
+### Further explorations
+
+There are some other things that could be explored, those are wild ideas and might not work so take it with a grain of salt:
+
+- If the password is plain text,
+  - it's possible to use a tree-like structure like a [binary tree](https://en.wikipedia.org/wiki/Binary_tree), [radix tree](https://en.wikipedia.org/wiki/Radix_tree), but probably a [trie](https://en.wikipedia.org/wiki/Trie) in the backend to compare the values and reduce the number of comparisons needed to find the correct pin
+  - If the pin is fully numeric, it's also possible to sort all the values using [radix sort](https://en.wikipedia.org/wiki/Radix_sort) and use a binary search to find the correct pin, along with almost any other sorting or searching algorithm
+- If the password is hashed,
+  - It's possible to use a [bloom filter](https://en.wikipedia.org/wiki/Bloom_filter) to try to reduce the number of comparisons needed to find the correct pin
+  - It's possible to test [LSH](https://en.wikipedia.org/wiki/Locality-sensitive_hashing) to see if it's possible to reduce the number of comparisons needed to find the correct pin
+
+*what else?*
+
 # How to run
 
 **Needs Node v20.6.0 or higher**
