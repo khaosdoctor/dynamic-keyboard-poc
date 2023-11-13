@@ -55,7 +55,7 @@ The project is done as a single front-end and backend application using Vue and 
 
 ```bash
 npm install
-npm run start:dev
+npm run start
 ```
 
 The application will run on port 3000. I'm also sending the `.env` file for reference, you can set the `PORT` variable there and other variables that are needed for other cases.
