@@ -12,26 +12,6 @@ This is a very common practice of preventing keyloggers from stealing your pin s
 
 I got curious after seeing [this tweet](https://twitter.com/niagalves/status/1719695627586580728), about how we could implement that, and this was a nice challenge.
 
-## Cases
-
-There are two main cases here:
-
-1. The pins are stored in plaintext in the database
-2. The pins are stored hashed in the database
-
-And for each case we have some other subcases:
-
-1. The whole cartesian permutation of the keyboard is done in the frontend
-  1.1 The keyboard is always static, having the same mapping for each user
-  1.2 The keyboard is dynamic, which means that the keyboard mapping comes from the backend and changes for every session
-2. The whole cartesian permutation of the keyboard is done in the backend
-  2.1 The keyboard is always static, having the same mapping for each user
-  2.2 The keyboard is dynamic, which means that the keyboard mapping comes from the backend and changes for every session
-
-The idea is to explore these points and see what are the pros and cons of each approach.
-
-Each case has its own branch, so you can check them out and see how they work.
-
 # How this case works
 
 In this case, we are running the simplest possible configuration, which is:
