@@ -18,7 +18,7 @@ In this case, we are running the simplest possible configuration, which is:
 
 1. The pins are stored in plaintext in the database
 2. The whole cartesian permutation of the keyboard is done in the frontend
-  2.1 The keyboard is always static, having the same mapping for each user
+3. The keyboard is always static, having the same mapping for each user
 
 The idea is to have a static keyboard, which means that the mapping of the keyboard is always the same for each user, and the whole cartesian permutation of the keyboard is done in the frontend, which means that the backend only receives the collection of possible pins in plaintext so it can compare with the pins it has stored locally in memory (we have some test users with some pins in the [server file](./src/server.ts)).
 
