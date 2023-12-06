@@ -24,11 +24,12 @@ This is the main branch so there's no actual code in here, you can check the oth
 And for each case we have some other subcases:
 
 1. The whole cartesian permutation of the keyboard is done in the frontend
-  1.1 The keyboard is always static, having the same mapping for each user
-  1.2 The keyboard is dynamic, which means that the keyboard mapping comes from the backend and changes for every session
-2. The whole cartesian permutation of the keyboard is done in the backend
-  2.1 The keyboard is always static, having the same mapping for each user
-  2.2 The keyboard is dynamic, which means that the keyboard mapping comes from the backend and changes for every session
+    - The keyboard is always static, having the same mapping for each user
+    - The keyboard is dynamic, which means that the keyboard mapping comes from the backend and changes for every session
+ 
+4. The whole cartesian permutation of the keyboard is done in the backend
+    - The keyboard is always static, having the same mapping for each user
+    - The keyboard is dynamic, which means that the keyboard mapping comes from the backend and changes for every session
 
 The idea is to explore these points and see what are the pros and cons of each approach.
 
